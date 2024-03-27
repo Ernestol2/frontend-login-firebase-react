@@ -21,12 +21,13 @@ const Login = () => {
       const currentUser = firebase.auth().currentUser;
       setUser(currentUser);
       // Send token to server
+      //seguir probando con esta, cambiar nombre a register
       const token = await currentUser.getIdToken();
-      await fetch('/api/createUser', {
+      await fetch('http://localhost:3000/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       });
     } catch (error) {

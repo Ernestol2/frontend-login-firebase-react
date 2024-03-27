@@ -6,7 +6,7 @@ const getUserToken = async () => {
   if (user) {
     try {
       const idToken = await user.getIdToken();
-      console.log('User ID token:', idToken);
+      //console.log('User ID token:', idToken);
       return idToken;
     } catch (error) {
       console.error('Error getting user token:', error);

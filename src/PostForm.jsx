@@ -13,16 +13,14 @@ const PostForm = ({ idToken }) => {
     setDescription(event.target.value);
   };
 
-  const handleSubmit = () => {
-    const postData = { title, description };
-
-    fetch('http://localhost:3000/posts', {
+  const handleSubmit = () => {   
+    console.log(idToken);
+    fetch('https://c16-backend.onrender.com/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${idToken}`
       },
-      body: JSON.stringify(postData),
     })
       .then(response => {
         if (!response.ok) {
@@ -32,11 +30,9 @@ const PostForm = ({ idToken }) => {
       })
       .then(data => {
         console.log('Post successfully sent:', data);
-        // If needed, you can add further actions upon successful response from the server
       })
       .catch(error => {
         console.error('There was a problem sending the post:', error);
-        // Handle errors here, e.g., display an error message to the user
       });
   };
 
